@@ -1,0 +1,39 @@
+-- Named query to drop the bp table
+DropBpTable:
+DROP TABLE IF EXISTS bp;
+
+-- Creating a table named bp with four fields: id, sbp, dbp, event_time
+CREATE TABLE bp (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, -- Auto incrementing primary key
+    sbp INTEGER, -- System blood pressure
+    dbp INTEGER, -- Diastolic blood pressure
+    event_time TEXT NOT NULL -- Event time in text format
+);
+
+-- Note: Consider creating INDEX for faster searches in large data sets
+
+-- Select all records from bp
+SelectAll:
+SELECT * FROM bp;
+
+-- Select record from bp by id
+SelectBpById:
+SELECT * FROM bp WHERE id = ?;
+
+-- Insert or replace record in bp
+InsertBpByValues:
+INSERT OR REPLACE INTO bp(id, sbp, dbp, event_time)
+VALUES (?, ?, ?,?);
+
+-- Insert or replace record in bp using an object
+InsertBpByObject:
+INSERT OR REPLACE INTO bp(id, sbp, dbp, event_time)
+VALUES ?;
+
+-- Delete record from bp by id
+DeleteBp:
+DELETE FROM bp WHERE id = ?;
+
+-- Delete all records from bp
+DeleteAllBp:
+DELETE FROM bp;
